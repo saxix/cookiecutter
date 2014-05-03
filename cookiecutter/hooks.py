@@ -49,8 +49,7 @@ def _run_hook(script_path, context, cwd='.'):
     If `cwd` is provided, the script will be run from that directory.
     '''
     if 'cookiecutter' in context:
-        os.environ.update({k: str(v) for k, v in context['cookiecutter'].items()})
-
+        os.environ.update(context['cookiecutter'])
     run_thru_shell = sys.platform.startswith('win')
     if script_path.endswith('.py'):
         script_command = [sys.executable, script_path]
