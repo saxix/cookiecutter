@@ -59,6 +59,9 @@ def _run_hook(script_path, cwd='.'):
         cwd=cwd
     )
     proc.wait()
+    if proc.returncode:
+        sys.stderr.write('An error occured running hook `{}`.\n'.format(script_path))
+        sys.exit(1)
 
 def run_hook(hook_name, project_dir):
     '''
