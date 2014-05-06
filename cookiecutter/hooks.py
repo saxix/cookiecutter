@@ -21,6 +21,7 @@ _HOOKS = [
     # TODO: other hooks should be listed here
 ]
 
+
 def find_hooks():
     '''
     Must be called with the project template as the current working directory.
@@ -49,7 +50,7 @@ def _run_hook(script_path, context, cwd='.'):
     If `cwd` is provided, the script will be run from that directory.
     '''
     if 'cookiecutter' in context:
-        os.environ.update({k: str(v) for k, v in context['cookiecutter'].items()})
+        os.environ.update(dict((k, str(v)) for k, v in context['cookiecutter'].items()))
 
     run_thru_shell = sys.platform.startswith('win')
     if script_path.endswith('.py'):
@@ -62,6 +63,7 @@ def _run_hook(script_path, context, cwd='.'):
         cwd=cwd
     )
     proc.wait()
+
 
 def run_hook(hook_name, context, project_dir):
     '''
