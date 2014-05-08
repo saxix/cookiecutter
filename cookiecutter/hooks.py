@@ -68,6 +68,7 @@ def _run_hook(script_path, context, cwd='.'):
         sys.exit(1)
 
 
+
 def run_hook(hook_name, context, project_dir):
     '''
     Try and find a script mapped to `hook_name` in the current working directory,
